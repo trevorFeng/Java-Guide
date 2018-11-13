@@ -13,14 +13,14 @@ JMS规范允许提供客户端创建持久订阅
 
 ![AA](../../imgs/20181112-8.png)
 
-##### JMS API
+##### JMS API 
 - ConnectionFactory    连接工厂
 - Connection    封装客户端与JMS provider之间的一个虚拟的连接
 - Session	生产和消费消息的一个单线程上下文； 用于创建producer、consumer、message、queue..
 - Destination	消息发送或者消息接收的目的地
 - MessageProducer/consumer	消息生产者/消费者
 
-##### 消息组成
+##### 消息组成 
 - 消息头
 
 包含消息的识别信息和路由信息
@@ -53,7 +53,7 @@ Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 在该模式下，消息何时被确认取决于创建会话时的应答模式
 - AUTO_ACKNOWLEDGE
 当客户端成功从recive方法返回以后，
-或者[MessageListener.onMessage] 方法成功返回以后，会话会自动确认该消息
+或者[MessageListener.onMessage] 方法成功返回以后，会话会自动确认该消息 
 - CLIENT_ACKNOWLEDGE
 客户端通过调用消息的textMessage.acknowledge();确认消息。
 在这种模式中，如果一个消息消费者消费一共是10个消息，那么消费了5个消息，
@@ -81,6 +81,8 @@ rollback意味着JMS Provider将会清除此事务下所有的消息记录。在
 2.如果用户在receive方法中设定了消息选择条件，那么不符合条件的消息会留在队列中不会被接收
 
 3.队列可以长久保存消息直到消息被消费者签收。消费者不需要担心因为消息丢失而时刻与jms provider保持连接状态
+
+
 
 
 
