@@ -37,4 +37,8 @@ ActiveMQconnectionFactory factory = new  ActiveMQconnectionFactory("failover:(tc
 
 分别启动三台服务器的mq
 
-分别访问三个服务器的mq的控制台，只有一台能访问，证明配置成功　　
+分别访问三个服务器的mq的控制台，只有一台能访问，证明配置成功　
+
+### 高可用配置+高性能
+![aa](../../imgs/20181120-1.jpg)
+　
