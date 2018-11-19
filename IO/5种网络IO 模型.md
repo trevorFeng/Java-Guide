@@ -93,11 +93,11 @@ IO multiplexing这个词可能有点陌生，但是如果我说select/epoll，�
 大部分Unix/Linux都支持select函数，该函数用于探测多个文件句柄的状态变化。下面给出select接口的原型：
 ```angular2html
 FD_ZERO(int fd, fd_set* fds) 
-    FD_SET(int fd, fd_set* fds) 
-    FD_ISSET(int fd, fd_set* fds) 
-    FD_CLR(int fd, fd_set* fds) 
-    int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, 
-    struct timeval *timeout) 
+FD_SET(int fd, fd_set* fds) 
+FD_ISSET(int fd, fd_set* fds) 
+FD_CLR(int fd, fd_set* fds) 
+int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, 
+struct timeval *timeout) 
 ```
 这里，fd_set 类型可以简单的理解为按 bit 位标记句柄的队列，例如要在某 fd_set 中标记一个值为16的句柄，则该fd_set的第16个bit位被标记为1。具体的置位、验证可使用 FD_SET、FD_ISSET等宏实现。在select()函数中，readfds、writefds和exceptfds同时作为输入参数和输出参数。如果输入的readfds标记了16号句柄，则select()将检测16号句柄是否可读。在select()返回后，可以通过检查readfds有否标记16号句柄，来判断该“可读”事件是否发生。另外，用户可以设置timeout时间。
 
